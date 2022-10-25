@@ -7,7 +7,7 @@ const Navbar = () => {
             <div className='navbar-container max-w-[1440px] mx-auto bg-white text-[#140342] shadow-md'>
                 <div className="navbar w-11/12 mx-auto py-2">
                     <div className="navbar-start">
-                        <Link to='/' className=" normal-case text-2xl"><img className='h-14 rounded' src={logo} alt="" /></Link>
+                        <Link to='/' className=" normal-case text-2xl"><img className='h-14 rounded' src={logo} alt="siteImage" /></Link>
                     </div>
                     <div className='navbar-end'>
                         {/* mobile navabr */}
@@ -31,27 +31,30 @@ const Navbar = () => {
                                     <Link to='/' >Home</Link>
                                 </li>
                                 <li>
-                                    <Link to='/' >Courses</Link>
+                                    <Link to='/courses' >Courses</Link>
                                 </li>
                                 <li>
-                                    <Link to='/' >FAQ</Link>
+                                    <Link to='/faq' >FAQ</Link>
                                 </li>
                                 <li>
                                     <Link to='/' >Blog</Link>
                                 </li>
                                 <li>
-                                    <Link to='/' >Log in</Link>
+                                    <Link to='/login'>Log in</Link>
                                 </li>
                                 <li>
-                                    <Link to='/' >Logout</Link>
+                                    <Link to='/signup'>Sign up</Link>
+                                </li>
+                                <li>
+                                    <p>Logout</p>
                                 </li>
                                 <div className="avatar my-auto">
                                     <div className="w-10 h-10 rounded-full">
-                                        <img src="https://placeimg.com/192/192/people" />
+                                        <img alt='avatar' src="https://placeimg.com/192/192/people" />
                                     </div>
                                 </div>
                                 <li>
-                                    <Link to='/' >Toggle</Link>
+                                    <p>Toggle</p>
                                 </li>
 
                             </ul>
