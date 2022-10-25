@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import { themeChange } from 'theme-change';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import logo from '../../educourx-logo.png';
 const Navbar = () => {
-    const { user, logOut, getUserData } = useContext(AuthContext);
-    
-    const photo = getUserData();
-    console.log(photo);
+    const { darkMode, user, logOut, setMode } = useContext(AuthContext);
     const logout = () => {
         logOut()
             .then(result => {
@@ -16,9 +14,17 @@ const Navbar = () => {
                 console.log(error);
             })
     }
+    let btnValue = false;
+    const handleDarkLightMode = (event) => {
+        btnValue = event.target.checked;
+        setMode(btnValue);
+    }
+    useEffect(() => {
+        themeChange(false)
+    },[btnValue])
     return (
         <>
-            <div className='navbar-container max-w-[1440px] mx-auto bg-white text-[#140342] shadow-md'>
+            <div className={darkMode ? 'navbar-container max-w-[1440px] mx-auto  text-white bg-black shadow-md' : 'navbar-container max-w-[1440px] mx-auto  bg-white text-[#140342] shadow-md'} >
                 <div className="navbar w-[98%] mx-auto py-2">
                     <div className="navbar-start">
                         <Link to='/' className=" normal-case text-2xl"><img className='h-14 rounded' src={logo} alt="siteImage" /></Link>
@@ -40,7 +46,7 @@ const Navbar = () => {
                         </div>
                         {/* pc / laptop navabr */}
                         <div className="  hidden md:flex">
-                            <ul className="menu menu-horizontal p-0">
+                            <ul className="menu menu-horizontal p-0 text-xl">
                                 <li>
                                     <Link to='/' >Home</Link>
                                 </li>
@@ -59,8 +65,8 @@ const Navbar = () => {
                                     </li>
                                     <div className="tooltip flex  tooltip-left my-auto" data-tip={user?.displayName}>
                                         <div className="avatar online my-auto">
-                                            <div className="border-2 w-10 h-10 my-auto rounded-full">
-                                                <img src={photo} />
+                                            <div className="border-2 w-12 h-12 my-auto rounded-full">
+                                                <img src={user?.photoURL} />
                                             </div>
                                         </div>
                                     </div>
@@ -75,9 +81,14 @@ const Navbar = () => {
                                         </li>
                                     </>
                                 }
-                                <li>
-                                    <p>Toggle</p>
-                                </li>
+                                <form className='flex items-center ml-3'>
+                                    
+                                    <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+                                    <div className="form-control">
+                                        <input type="checkbox" className="toggle toggle-primary" name='darklightbtn'   />
+                                    </div>
+                                    </button>
+                                </form>
 
                             </ul>
                         </div>

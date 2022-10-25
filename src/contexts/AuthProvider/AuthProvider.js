@@ -6,9 +6,12 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
+    const [darkMode, setDarkMode]= useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-
+    const setMode = (value) => {
+        setDarkMode(value);
+    }
     const logOut = () => {
         setLoading(true);
         return signOut(auth);
@@ -29,13 +32,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return updateProfile(auth.currentUser, profile);
     }
-    const getUserData = () => {
-        if (user != null) {
-            // Name, email address, and profile photo Url
-            return user.photoURL;
-        }
-
-    }
+     
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
@@ -43,7 +40,7 @@ const AuthProvider = ({ children }) => {
         })
         return () => unsubscribe();
     }, [])
-    const authInfo = { user, providerLogin, createNewUser, logOut, userLogin, updateUserInfo, loading, getUserData }
+    const authInfo = {darkMode,setMode, user, providerLogin, createNewUser, logOut, userLogin, updateUserInfo, loading}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

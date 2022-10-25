@@ -9,7 +9,7 @@ const Login = () => {
     const location = useLocation();
     const from = location?.state?.form?.pathname || '/';
     const navigate = useNavigate();
-    console.log(from);
+   
 
     const handleGoogleSignin = () => {
         const provider = new GoogleAuthProvider();

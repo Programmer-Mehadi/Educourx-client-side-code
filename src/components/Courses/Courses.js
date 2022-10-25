@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaAngleRight, FaChartBar, FaClock, FaFileExcel, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import SideBar from '../SideBar/SideBar';
 const Courses = () => {
 
     const courses = useLoaderData()
-    
+    const { darkMode } = useContext(AuthContext);
     return (
-        <div className='max-w-[1440px] mx-auto'>
+        <div className= 'bg-white text-[#140342] max-w-[1440px] mx-auto '>
             <div className='w-[98%] mx-auto py-14'>
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                     <div className='w-full'>
@@ -17,7 +18,7 @@ const Courses = () => {
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
                             {
                                 courses.map((course) =>
-                                    <div key={course.id} className="card w-full rounded  shadow" >
+                                    <div key={course.id} className= "card  w-full rounded  shadow border border-white">
                                         <figure><img className='h-52 w-full' src={course.img} alt="car!" /></figure>
                                         <div className="card-body px-2">
                                             <p className='text-[#ff9800] flex gap-2 items-center'>{course.rating}<FaStar className='w-5 h-5' /> </p>

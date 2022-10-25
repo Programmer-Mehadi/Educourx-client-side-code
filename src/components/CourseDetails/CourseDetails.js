@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaAngleRight, FaChartBar, FaClock, FaFileExcel, FaMoneyBill, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const CourseDetails = () => {
     const course = useLoaderData();
- 
+    const { darkMode } = useContext(AuthContext);
     const { id, courseName, img, categoryName, authorName, rating, price, lessons, time, levels } = course;
     return (
-        <div className='py-10 bg-amber-50 max-w-[1440px] mx-auto'>
+        <div className='py-10  max-w-[1440px] mx-auto'>
             <div className='w-[98%] mx-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
                 <div className='col-span-1 md:col-span-2 lg:col-span-3'>
                     <img src={img} alt="" className='w-full h-[400px] rounded' />

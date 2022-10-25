@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Signup = () => {
     const [error, setError] = useState(null);
     const [authError, setAuthError] = useState(null);
-    const { providerLogin, createNewUser, updateUserInfo } = useContext(AuthContext);
+    const { user, providerLogin, createNewUser, updateUserInfo, logOut,userLogin} = useContext(AuthContext);
     const location = useLocation();
     const from = location?.state?.form?.pathname || '/';
     const navigate = useNavigate();
@@ -41,7 +41,6 @@ const Signup = () => {
         const confirmPassword = event.target.confirmpassword.value;
         const fullname = event.target.fullname.value;
         const photoURL = event.target.file.value;
-        console.log(email, password, confirmPassword, fullname, photoURL);
         if (password.length >= 6) {
             if (password === confirmPassword) {
                 createNewUser(email, password)
@@ -59,7 +58,20 @@ const Signup = () => {
                                 console.log(error);
                             })
                         event.target.reset();
-                        navigate(from, { replace: true });
+                        logOut()
+                            .then(result => {
+                                userLogin(email, password)
+                                    .then(result => {
+                                        navigate(from, { replace: true });
+                                    })
+                                    .catch(error => {
+                                        console.log(error);
+                                    })
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+
                     })
                     .catch(error => {
                         console.log(error);
@@ -119,7 +131,7 @@ const Signup = () => {
                                 <label className="label">
                                     <span className="label-text">Photo</span>
                                 </label>
-                                <input type="file" name='file' required />
+                                <input type="text" name='file' className="input input-bordered rounded" placeholder='user photo url' required />
                             </div>
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
