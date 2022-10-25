@@ -1,6 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Signup = () => {
     const { user, providerLogin, createNewUser } = useContext(AuthContext);
@@ -39,8 +40,7 @@ const Signup = () => {
     }
     return (
         <div className=''>
-            <p>{user?.displayName}</p>
-            <img src={user?.photoURL} alt="" />
+            
             <div className="hero min-h-screen bg-[#f5f7fe]">
                 <div className="hero-content grid grid-cols-6 w-11/12">
                     <div className="col-span-3 lg:text-left">
@@ -70,7 +70,8 @@ const Signup = () => {
                                 />
                             </div>
                             <div>
-                                <p  className='py-2'>Already have an account?<span className='ml-1 font-bold text-[#FB2576]' >Login</span></p>
+                            <p  className='py-2'>Already have an account?<span className='ml-1 font-bold text-[#FB2576]' > <Link to='/login'>Login</Link></span></p>
+                             
                             </div>
                             <div>
                                 <p onClick={handleGoogleSignin} className='btn bg-white text-black hover:bg-[#000439] hover:text-white border-2 rounded w-full'>
