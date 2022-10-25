@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaAngleRight, FaChartBar, FaClock, FaFileExcel, FaStar } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import SideBar from '../SideBar/SideBar';
 const Courses = () => {
 
@@ -50,7 +50,9 @@ const Courses = () => {
                                                 </div>
                                             </div>
                                             <div className="card-actions ">
-                                                <button className="btn btn-primary w-full rounded ">View Details <FaAngleRight className='ml-3'/></button>
+                                                <Link to={`/course/${course.id}`} className='w-full'>
+                                                    <button className="btn btn-primary w-full rounded ">View Details <FaAngleRight className='ml-3' /></button>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>

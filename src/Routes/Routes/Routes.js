@@ -5,7 +5,6 @@ import Home from '../../components/Home/Home';
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
 import Main from "../../layout/Main";
-import PrivateRoute from "./PrivateRoute";
 export const routes = createBrowserRouter([
     {
         path: '/',
@@ -21,7 +20,7 @@ export const routes = createBrowserRouter([
                     return fetch('https://edu-courx-server.vercel.app/courses');
                    }
                 ,
-                element: <PrivateRoute><Courses/></PrivateRoute>
+                element: <Courses></Courses>
             }, {
                 path: '/login',
                 element: <Login></Login>
