@@ -16,6 +16,10 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
+                loader: async () => {
+                   return fetch('https://edu-courx-server.vercel.app/courses');
+                  }
+                ,
                 element: <PrivateRoute><Courses/></PrivateRoute>
             }, {
                 path: '/login',
