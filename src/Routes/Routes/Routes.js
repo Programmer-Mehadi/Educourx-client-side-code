@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import CheckOut from "../../components/CheckOut/CheckOut";
 import CourseDetails from "../../components/CourseDetails/CourseDetails";
 import Courses from '../../components/Courses/Courses';
 import Home from '../../components/Home/Home';
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
 import Main from "../../layout/Main";
+import PrivateRoute from "./PrivateRoute";
 export const routes = createBrowserRouter([
     {
         path: '/',
@@ -35,6 +37,22 @@ export const routes = createBrowserRouter([
                    }
                 ,
                 element:<CourseDetails></CourseDetails>
+            },
+             {
+                path: '/courses/category/:id',
+                loader: async ({params}) => {
+                    return fetch(`https://edu-courx-server.vercel.app/courses/category/${params.id}`);
+                   }
+                ,
+                element:<Courses></Courses>
+            },
+            {
+                path: '/checkout/:id',
+                loader: async ({params}) => {
+                    return fetch(`https://edu-courx-server.vercel.app/course/${params.id}`);
+                   }
+                ,
+                element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>
             }
         ]
     }

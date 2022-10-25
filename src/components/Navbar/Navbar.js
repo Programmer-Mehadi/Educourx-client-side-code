@@ -16,7 +16,7 @@ const Navbar = () => {
     return (
         <>
             <div className='navbar-container max-w-[1440px] mx-auto bg-white text-[#140342] shadow-md'>
-                <div className="navbar w-11/12 mx-auto py-2">
+                <div className="navbar w-[98%] mx-auto py-2">
                     <div className="navbar-start">
                         <Link to='/' className=" normal-case text-2xl"><img className='h-14 rounded' src={logo} alt="siteImage" /></Link>
                     </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
                                     <li>
                                         <p onClick={logout}>Logout</p>
                                     </li>
-                                    <div className="tooltip  tooltip-left my-auto" data-tip="hello">
+                                    <div className="tooltip flex  tooltip-left my-auto" data-tip="hello">
                                         <div className="avatar online my-auto">
                                             <div className="w-10 h-10 my-auto rounded-full">
                                                 <img src="https://placeimg.com/192/192/people" />
