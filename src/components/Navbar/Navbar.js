@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import logo from '../../educourx-logo.png';
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, getUserData } = useContext(AuthContext);
+    
+    const photo = getUserData();
+    console.log(photo);
     const logout = () => {
         logOut()
             .then(result => {
@@ -54,10 +57,10 @@ const Navbar = () => {
                                     <li>
                                         <p onClick={logout}>Logout</p>
                                     </li>
-                                    <div className="tooltip flex  tooltip-left my-auto" data-tip={user.displayName}>
+                                    <div className="tooltip flex  tooltip-left my-auto" data-tip={user?.displayName}>
                                         <div className="avatar online my-auto">
-                                            <div className="w-10 h-10 my-auto rounded-full">
-                                                <img src="https://placeimg.com/192/192/people" />
+                                            <div className="border-2 w-10 h-10 my-auto rounded-full">
+                                                <img src={photo} />
                                             </div>
                                         </div>
                                     </div>
@@ -72,9 +75,6 @@ const Navbar = () => {
                                         </li>
                                     </>
                                 }
-
-
-
                                 <li>
                                     <p>Toggle</p>
                                 </li>

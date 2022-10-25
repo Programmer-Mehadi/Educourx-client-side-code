@@ -8,7 +8,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    
+
     const logOut = () => {
         setLoading(true);
         return signOut(auth);
@@ -29,6 +29,13 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return updateProfile(auth.currentUser, profile);
     }
+    const getUserData = () => {
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            return user.photoURL;
+        }
+
+    }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
@@ -36,7 +43,7 @@ const AuthProvider = ({ children }) => {
         })
         return () => unsubscribe();
     }, [])
-    const authInfo = { user, providerLogin, createNewUser,logOut,userLogin,updateUserInfo,loading}
+    const authInfo = { user, providerLogin, createNewUser, logOut, userLogin, updateUserInfo, loading, getUserData }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}
