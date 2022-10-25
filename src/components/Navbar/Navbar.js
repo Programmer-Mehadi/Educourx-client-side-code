@@ -4,7 +4,6 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import logo from '../../educourx-logo.png';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
     const logout = () => {
         logOut()
             .then(result => {
@@ -51,28 +50,31 @@ const Navbar = () => {
                                 <li>
                                     <Link to='/' >Blog</Link>
                                 </li>
-                                <li>
-                                    <Link to='/login'>Log in</Link>
-                                </li>
-                                <li>
-                                    <Link to='/signup'>Sign up</Link>
-                                </li>
-                                <li>
-                                    <p>{user?.displayName}</p>
-                                </li>
-                                <li>
-                                    <p onClick={logout}>Logout</p>
-                                </li>
-                                <div className="avatar my-auto">
-                                    <div className="w-10 h-10 rounded-full">
-                                        {
-                                            user?.photoURL ? <img alt={user.photoURL} src={user.photoURL} />
-                                                :
-                                                <img alt='avatar' src="https://placeimg.com/192/192/people" />
-
-                                        }
+                                {user ? <>
+                                    <li>
+                                        <p onClick={logout}>Logout</p>
+                                    </li>
+                                    <div className="tooltip  tooltip-left my-auto" data-tip="hello">
+                                        <div className="avatar online my-auto">
+                                            <div className="w-10 h-10 my-auto rounded-full">
+                                                <img src="https://placeimg.com/192/192/people" />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </>
+                                    :
+                                    <>
+                                        <li>
+                                            <Link to='/login'>Log in</Link>
+                                        </li>
+                                        <li>
+                                            <Link to='/signup'>Sign up</Link>
+                                        </li>
+                                    </>
+                                }
+
+
+
                                 <li>
                                     <p>Toggle</p>
                                 </li>

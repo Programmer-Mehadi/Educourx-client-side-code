@@ -4,7 +4,8 @@ import Home from '../../components/Home/Home';
 import Login from "../../components/Login/Login";
 import Signup from "../../components/Signup/Signup";
 import Main from "../../layout/Main";
-export  const routes = createBrowserRouter([
+import PrivateRoute from "./PrivateRoute";
+export const routes = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
@@ -15,14 +16,14 @@ export  const routes = createBrowserRouter([
             },
             {
                 path: '/courses',
-                element: <Courses></Courses>
+                element: <PrivateRoute><Courses/></PrivateRoute>
             }, {
                 path: '/login',
                 element: <Login></Login>
             }
             , {
                 path: '/signup',
-                element:  <Signup></Signup>
+                element: <Signup></Signup>
             }
         ]
     }

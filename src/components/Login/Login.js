@@ -1,11 +1,20 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Login = () => {
     const [error, setError] = useState(null);
     const { user, providerLogin, userLogin } = useContext(AuthContext);
+    const location = useLocation();
+    const from = location?.state?.form?.pathname || '/';
+    const navigate = useNavigate();
+    console.log(from);
+    useEffect(() => {
+        if (from == '/') {
+            navigate('/');
+        }
+    })
     const handleGoogleSignin = () => {
         const provider = new GoogleAuthProvider();
         providerLogin(provider)
@@ -34,6 +43,8 @@ const Login = () => {
         userLogin(email, password)
             .then(result => {
                 console.log(result);
+                event.target.reset();
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 const errorText = error.code;
@@ -66,7 +77,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className={error === 'Wrong password' || error === 'No user found' ? 'border-red-700 input input-bordered rounded' : "input input-bordered rounded"} required />
+                                <input type="password" name='password' placeholder="password" className="input input-bordered rounded" required />
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
