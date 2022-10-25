@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import logo from '../../educourx-logo.png';
 const Navbar = () => {
+    const { logOut } = useContext(AuthContext);
+    const logout = () => {
+        logOut()
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
     return (
         <>
             <div className='navbar-container max-w-[1440px] mx-auto bg-white text-[#140342] shadow-md'>
@@ -46,7 +57,7 @@ const Navbar = () => {
                                     <Link to='/signup'>Sign up</Link>
                                 </li>
                                 <li>
-                                    <p>Logout</p>
+                                    <p onClick={logout}>Logout</p>
                                 </li>
                                 <div className="avatar my-auto">
                                     <div className="w-10 h-10 rounded-full">
