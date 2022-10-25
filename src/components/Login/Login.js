@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
@@ -10,16 +10,13 @@ const Login = () => {
     const from = location?.state?.form?.pathname || '/';
     const navigate = useNavigate();
     console.log(from);
-    useEffect(() => {
-        if (from == '/') {
-            navigate('/');
-        }
-    })
+
     const handleGoogleSignin = () => {
         const provider = new GoogleAuthProvider();
         providerLogin(provider)
             .then(result => {
-                console.log(result)
+                console.log(result);
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error);
@@ -29,7 +26,8 @@ const Login = () => {
         const provider = new GithubAuthProvider();
         providerLogin(provider)
             .then(result => {
-                console.log(result)
+                console.log(result);
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error);

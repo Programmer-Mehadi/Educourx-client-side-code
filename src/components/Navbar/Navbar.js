@@ -54,7 +54,7 @@ const Navbar = () => {
                                     <li>
                                         <p onClick={logout}>Logout</p>
                                     </li>
-                                    <div className="tooltip flex  tooltip-left my-auto" data-tip="hello">
+                                    <div className="tooltip flex  tooltip-left my-auto" data-tip={user.displayName}>
                                         <div className="avatar online my-auto">
                                             <div className="w-10 h-10 my-auto rounded-full">
                                                 <img src="https://placeimg.com/192/192/people" />
