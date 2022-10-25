@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import CourseDetails from "../../components/CourseDetails/CourseDetails";
 import Courses from '../../components/Courses/Courses';
 import Home from '../../components/Home/Home';
 import Login from "../../components/Login/Login";
@@ -17,8 +18,8 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 loader: async () => {
-                   return fetch('https://edu-courx-server.vercel.app/courses');
-                  }
+                    return fetch('https://edu-courx-server.vercel.app/courses');
+                   }
                 ,
                 element: <PrivateRoute><Courses/></PrivateRoute>
             }, {
@@ -28,6 +29,13 @@ export const routes = createBrowserRouter([
             , {
                 path: '/signup',
                 element: <Signup></Signup>
+            }, {
+                path: '/course/:id',
+                loader: async ({params}) => {
+                    return fetch(`https://edu-courx-server.vercel.app/course/${params.id}`);
+                   }
+                ,
+                element:<CourseDetails></CourseDetails>
             }
         ]
     }
