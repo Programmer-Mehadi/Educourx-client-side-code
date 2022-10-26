@@ -24,14 +24,14 @@ const Navbar = () => {
     }, [btnValue])
     return (
         <>
-            <div className='navbar-container max-w-[1440px] mx-auto   text-black '>
+            <div className='navbar-container max-w-[1440px] mx-auto  font-semibold '>
                 <div className="navbar w-[98%] mx-auto py-2">
                     <div className="navbar-start">
                         <Link to='/' className=" normal-case text-2xl"><img className='h-14 rounded' src={logo} alt="siteImage" /></Link>
                     </div>
                     <div className='navbar-end'>
                         
-                        <div className=" dropdown w-fit md:hidden text-black">
+                        <div className=" dropdown w-fit md:hidden ">
 
                             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow border-2 border-slate-800 bg-[#000481] text-white w-[152px] left-[-100px] top-[45px] rounded">
                             <li>

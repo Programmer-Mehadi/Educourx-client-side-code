@@ -8,15 +8,15 @@ const Home = () => {
     const m = 'mehadi';
     return (
         <div>
-            <div className={`home-main-container ${m} w-[98%] mx-auto grid grid-cols-1 md:grid-cols-2 py-10 min-h-[500px] items-center gap-8`}>
+            <div className={`home-main-container ${m} w-[98%] mx-auto grid grid-cols-1 md:grid-cols-2 py-10 min-h-[550px] items-center gap-8`}>
                 <div className='top-section'>
                     <h2 className='font-extrabold text-4xl '>Best Learning<h2 className='text-[#6141b8] py-2'>Education Platform</h2><h2 className='text-[#6a46cb]'>in The World</h2></h2>
                     <p className='text-xl font-semibold py-2'>Start, switch, or advance your career with more than 5,200 courses, Professional Certificates, and degrees from world-class universities and companies.</p>
                     <div className='flex gap-4'>
                         {
-                            !user?.uid && <Link to='/login'><button className='btn mt-3 rounded bg-[#140342]'>Join Free Now</button></Link>
+                            !user?.uid && <Link to='/login'><button className='btn mt-3 rounded bg-[#000481]'>Join Free Now</button></Link>
                         }
-                        <Link to='/courses'><button className='btn mt-3 rounded bg-white text-black border-[1.5px] border-[#140342] hover:text-white'>View all courses</button></Link>
+                        <Link to='/courses'><button className='btn mt-3 rounded bg-white text-primary border-[1.5px] border-primary hover:text-white'>View all courses</button></Link>
                     </div>
                 </div>
                 <div className='flex'>
