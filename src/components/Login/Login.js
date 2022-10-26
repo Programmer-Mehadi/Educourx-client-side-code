@@ -1,16 +1,18 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Login = () => {
     const [error, setError] = useState(null);
     const { user, providerLogin, userLogin } = useContext(AuthContext);
+    
     const location = useLocation();
     const from = location?.state?.form?.pathname || '/';
     const navigate = useNavigate();
-   
-
+    if (user && user.uid) {
+        return <Navigate to="/"></Navigate>
+    }
     const handleGoogleSignin = () => {
         const provider = new GoogleAuthProvider();
         providerLogin(provider)
