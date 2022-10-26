@@ -8,7 +8,7 @@ const Courses = () => {
     const courses = useLoaderData()
     const { darkMode } = useContext(AuthContext);
     return (
-        <div className= 'bg-white text-[#140342] max-w-[1440px] mx-auto '>
+        <div className= ' text-[#140342] max-w-[1440px] mx-auto '>
             <div className='w-[98%] mx-auto py-14'>
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                     <div className='w-full'>
@@ -51,7 +51,7 @@ const Courses = () => {
                                                 </div>
                                             </div>
                                             <div className="card-actions ">
-                                                <Link to={`/course/${course.id}`} className='w-full'>
+                                                <Link to={`/course/${course._id}`} className='w-full'>
                                                     <button className="btn btn-primary w-full rounded ">View Details <FaAngleRight className='ml-3' /></button>
                                                 </Link>
                                             </div>
