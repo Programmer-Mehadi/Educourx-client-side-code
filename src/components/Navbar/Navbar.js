@@ -21,7 +21,7 @@ const Navbar = () => {
     }
     useEffect(() => {
         themeChange(false)
-    },[btnValue])
+    }, [btnValue])
     return (
         <>
             <div className='navbar-container max-w-[1440px] mx-auto   text-black '>
@@ -30,17 +30,55 @@ const Navbar = () => {
                         <Link to='/' className=" normal-case text-2xl"><img className='h-14 rounded' src={logo} alt="siteImage" /></Link>
                     </div>
                     <div className='navbar-end'>
-                        {/* mobile navabr */}
+                        
                         <div className=" dropdown w-fit md:hidden text-black">
 
-                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow border-2 border-slate-800 bg-blue-800 text-white w-[152px] left-[-100px] top-[45px] rounded">
-                                <li className=''>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow border-2 border-slate-800 bg-[#000481] text-white w-[152px] left-[-100px] top-[45px] rounded">
+                            <li>
                                     <Link to='/' >Home</Link>
-
                                 </li>
+                                <li>
+                                    <Link to='/courses' >Courses</Link>
+                                </li>
+                                <li>
+                                    <Link to='/faq' >FAQ</Link>
+                                </li>
+                                <li>
+                                    <Link to='/' >Blog</Link>
+                                </li>
+                                {user ? <>
+                                    <li>
+                                        <p onClick={logout}>Logout</p>
+                                    </li>
+                                    <li className="tooltip flex  tooltip-left my-auto" data-tip={user?.displayName}>
+                                        <div className="avatar  my-auto">
+                                            <div className="border-green-500 w-12 h-12 border-2 my-auto rounded-full">
+                                                <img src={user?.photoURL} />
+                                            </div>
+                                        </div>
+                                    </li>
+                                </>
+                                    :
+                                    <>
+                                        <li>
+                                            <Link to='/login'>Log in</Link>
+                                        </li>
+                                        <li>
+                                            <Link to='/signup'>Sign up</Link>
+                                        </li>
+                                    </>
+                                }
+                                <form className='flex items-center ml-3'>
+
+                                    <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+                                        <div className="form-control">
+                                            <input type="checkbox" className="toggle toggle-primary" name='darklightbtn' />
+                                        </div>
+                                    </button>
+                                </form>
 
                             </ul>
-                            <label tabIndex={0} className="btn btn-ghost text-white lg:hidden">
+                            <label tabIndex={0} className="btn btn-ghost text-white lg:hidden bg-[#000481]">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </label>
                         </div>
@@ -82,11 +120,11 @@ const Navbar = () => {
                                     </>
                                 }
                                 <form className='flex items-center ml-3'>
-                                    
+
                                     <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
-                                    <div className="form-control">
-                                        <input type="checkbox" className="toggle toggle-primary" name='darklightbtn'   />
-                                    </div>
+                                        <div className="form-control">
+                                            <input type="checkbox" className="toggle toggle-primary" name='darklightbtn' />
+                                        </div>
                                     </button>
                                 </form>
 
