@@ -24,7 +24,7 @@ const Navbar = () => {
     },[btnValue])
     return (
         <>
-            <div className='navbar-container max-w-[1440px] mx-auto   text-[#140342] '>
+            <div className='navbar-container max-w-[1440px] mx-auto   text-black '>
                 <div className="navbar w-[98%] mx-auto py-2">
                     <div className="navbar-start">
                         <Link to='/' className=" normal-case text-2xl"><img className='h-14 rounded' src={logo} alt="siteImage" /></Link>

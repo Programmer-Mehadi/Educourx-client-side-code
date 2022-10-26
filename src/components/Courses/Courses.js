@@ -22,7 +22,7 @@ const Courses = () => {
                                         <figure><img className='h-52 w-full' src={course.img} alt="car!" /></figure>
                                         <div className="card-body px-2">
                                             <p className='text-[#ff9800] flex gap-2 items-center'>{course.rating}<FaStar className='w-5 h-5' /> </p>
-                                            <h2 className="card-title">{course.courseName}</h2>
+                                            <h2 className="card-title text-[#6a46cb]">{course.courseName}</h2>
                                             <div className='py-2 flex justify-between text-[#4f547b]'>
                                                 <div className='flex flex-col gap-1 items-center'>
                                                     <FaFileExcel />
@@ -47,7 +47,7 @@ const Courses = () => {
                                                         </div>
                                                         <p className='text-[#4f547b]'>{course.authorName}</p>
                                                     </div>
-                                                    <p className='text-right'>{course.price}</p>
+                                                    <p className='text-right text-[#6a46cb]'>{course.price}</p>
                                                 </div>
                                             </div>
                                             <div className="card-actions ">

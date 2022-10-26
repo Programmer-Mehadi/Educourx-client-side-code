@@ -59,7 +59,7 @@ const Login = () => {
     }
     return (
         <div className=''>
-            <div className="hero min-h-screen bg-[#f5f7fe]">
+            <div className="hero min-h-screen">
                 <div className="hero-content grid grid-cols-6 w-11/12">
                     <div className="col-span-3 lg:text-left">
                         <h1 className="text-5xl font-bold">Login now!</h1>
@@ -93,7 +93,7 @@ const Login = () => {
 
                             </div>
                             <div>
-                                <p onClick={handleGoogleSignin} className='btn bg-white text-black hover:bg-[#000439] hover:text-white border-2 rounded w-full'>
+                                <p onClick={handleGoogleSignin} className='btn  bg-[#000439] hover:text-white border-2 rounded w-full'>
                                     <span className='mr-2 '>
                                         <FaGoogle className='w-5 h-5' />
                                     </span>
@@ -101,7 +101,7 @@ const Login = () => {
 
                             </div>
                             <div>
-                                <p onClick={handleGithubSignin} className='btn bg-white text-black hover:bg-[#000439] hover:text-white border-2 rounded w-full'>   <span className='mr-2 '>
+                                <p onClick={handleGithubSignin} className='btn bg-[#000439] hover:text-white border-2 rounded w-full'>   <span className='mr-2 '>
                                     <FaGithub className='w-5 h-5' />
                                 </span> Continue with Github</p>
                             </div>
