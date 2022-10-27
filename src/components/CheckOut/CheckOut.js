@@ -11,7 +11,7 @@ const CheckOut = () => {
                 <div>
                     <p className='text-2xl font-bold'>{courseName}</p>
                     <p className='text-xl font-semibold   py-2'>{price}</p>
-                    <img className='h-[300px] w-[300px] mx-auto block rounded' src={img} alt="" />
+                    <img className='h-[250px] w-[300px] mx-auto block rounded' src={img} alt="" />
                     <button className='btn rounded btn-primary my-4'>Place Order</button>
                 </div>
             </div>
