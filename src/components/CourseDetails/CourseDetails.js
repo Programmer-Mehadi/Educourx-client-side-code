@@ -77,7 +77,7 @@ const CourseDetails = () => {
                         <div className='w-full pt-4'>
                             <div className="avatar w-full">
                                 <div className="w-24 rounded-full ring ring-primary mx-auto ring-offset-base-100 ring-offset-2">
-                                    <img src={authorInfo.authorImage} />
+                                    <img src={authorInfo.authorImage} alt="" />
                                 </div>
                             </div>
                         </div>

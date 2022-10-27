@@ -18,8 +18,8 @@ const Courses = () => {
                         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3'>
                             {
                                 courses.map((course) =>
-                                    <div key={course.id} className= "card  w-full rounded  shadow border border-white">
-                                        <figure><img className='h-52 w-full' src={course.img} alt="car!" /></figure>
+                                    <div key={course._id} className= "card  w-full rounded  shadow border border-white">
+                                        <figure><img className='h-52 w-full' src={course.img} alt="" /></figure>
                                         <div className="card-body px-2">
                                             <p className='text-[#ff9800] flex gap-2 items-center'>{course.rating}<FaStar className='w-5 h-5' /> </p>
                                             <h2 className="card-title text-[#6a46cb]">{course.courseName}</h2>
@@ -43,7 +43,7 @@ const Courses = () => {
                                                 <div className=' py-2 flex justify-between items-center'>
                                                     <div className="avatar flex items-center gap-1">
                                                         <div className="w-10 rounded-full">
-                                                            <img src= {course.authorImage} />
+                                                            <img src= {course.authorImage} alt="" />
                                                         </div>
                                                         <p className='text-[#4f547b]'>{course.authorName}</p>
                                                     </div>
