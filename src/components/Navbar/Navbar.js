@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import logo from '../../educourx-logo.png';
 const Navbar = () => {
-    const { user, logOut,updateMode } = useContext(AuthContext);
+    const { mode, user, logOut, updateMode } = useContext(AuthContext);
     const logout = () => {
         logOut()
             .then(result => {
@@ -63,10 +63,13 @@ const Navbar = () => {
                                     </>
                                 }
                                 <form className='flex items-center ml-3'>
-
                                     <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
                                         <div className="form-control">
-                                            <input type="checkbox" className="toggle toggle-primary" name='darklightbtn' />
+                                            {
+                                                mode ? <input onClick={updateViewMode} type="checkbox" className="toggle toggle-primary" name='darklightbtn' checked /> : <input onClick={updateViewMode} type="checkbox" className="toggle toggle-primary" name='darklightbtn' />
+                                            }
+
+
                                         </div>
                                     </button>
                                 </form>
@@ -117,11 +120,14 @@ const Navbar = () => {
                                         </li>
                                     </>
                                 }
-                                <form   className='flex items-center ml-3'>
-
-                                    <button  data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+                                <form className='flex items-center ml-3'>
+                                    <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
                                         <div className="form-control">
-                                            <input onClick={updateViewMode} type="checkbox" className="toggle toggle-primary" name='darklightbtn' />
+                                            {
+                                                mode ? <input onClick={updateViewMode} type="checkbox" className="toggle toggle-primary" name='darklightbtn' checked /> : <input onClick={updateViewMode} type="checkbox" className="toggle toggle-primary" name='darklightbtn' />
+                                            }
+
+
                                         </div>
                                     </button>
                                 </form>
