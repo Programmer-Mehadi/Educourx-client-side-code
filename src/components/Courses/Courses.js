@@ -43,7 +43,7 @@ const Courses = () => {
                                                 <div className=' py-2 flex justify-between items-center'>
                                                     <div className="avatar flex items-center gap-1">
                                                         <div className="w-10 rounded-full">
-                                                            <img src="https://placeimg.com/192/192/people" />
+                                                            <img src= {course.authorImage} />
                                                         </div>
                                                         <p className='text-[#4f547b]'>{course.authorName}</p>
                                                     </div>
