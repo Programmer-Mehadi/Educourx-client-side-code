@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaAngleRight, FaCertificate, FaChartBar, FaClock, FaFileExcel, FaLocationArrow, FaMoneyBill, FaPhone, FaSms, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import Pdf from "react-to-pdf";
-
+const ref = React.createRef()
 const CourseDetails = () => {
-    const ref = useRef()
+  
     const course = useLoaderData();
 
     const [authorInfo, setAuthorInfo] = useState({});
