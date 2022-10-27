@@ -6,11 +6,12 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
-    const [darkMode, setDarkMode]= useState(false);
+    const [mode, setMode] = useState(false);
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const setMode = (value) => {
-        setDarkMode(value);
+
+    const updateMode = (value) => {
+        setMode(value);
     }
     const logOut = () => {
         setLoading(true);
@@ -32,7 +33,7 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return updateProfile(auth.currentUser, profile);
     }
-     
+
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
@@ -40,7 +41,7 @@ const AuthProvider = ({ children }) => {
         })
         return () => unsubscribe();
     }, [])
-    const authInfo = {darkMode,setMode, user, providerLogin, createNewUser, logOut, userLogin, updateUserInfo, loading}
+    const authInfo = {mode,updateMode,user, providerLogin, createNewUser, logOut, userLogin, updateUserInfo, loading }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

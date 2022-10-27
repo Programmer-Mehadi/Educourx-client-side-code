@@ -5,8 +5,8 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Login = () => {
     const [error, setError] = useState(null);
-    const { user, providerLogin, userLogin } = useContext(AuthContext);
-    
+    const {mode, user, providerLogin, userLogin } = useContext(AuthContext);
+ 
     const location = useLocation();
     const from = location?.state?.form?.pathname || '/';
     const navigate = useNavigate();
@@ -65,21 +65,21 @@ const Login = () => {
                         <h1 className="text-5xl font-bold">Login now!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
-                    <div className="col-span-3 card flex-shrink-0 w-full shadow-2xl bg-base-100 border-0 rounded">
+                    <div className={`col-span-3 card flex-shrink-0 w-full shadow-2xl  border-0 rounded ${mode===true && 'text-white  border-emerald-50 border-[1px]'}`}>
                         <form onSubmit={login} className="card-body ">
                             <div className="form-control border-0">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="">Email</span>
                                 </label>
                                 <input required type="email" name='email' placeholder="email" className='input input-bordered rounded' />
                             </div>
                             <div className="form-control border-0">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered rounded" required />
+                                <input type="password" name='password' placeholder="password" className="input text-slate-900 input-bordered rounded" required />
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <p  className="hover:underline">Forgot password?</p>
                                 </label>
                             </div>
                             <div>

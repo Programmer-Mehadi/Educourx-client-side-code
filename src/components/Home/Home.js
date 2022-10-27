@@ -4,7 +4,6 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Home = () => {
     const { user } = useContext(AuthContext);
-    console.log(user);
     const m = 'mehadi';
     return (
         <div>

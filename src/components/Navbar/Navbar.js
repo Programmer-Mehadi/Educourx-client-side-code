@@ -1,10 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import { themeChange } from 'theme-change';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import logo from '../../educourx-logo.png';
 const Navbar = () => {
-    const { darkMode, user, logOut, setMode } = useContext(AuthContext);
+    const { user, logOut,updateMode } = useContext(AuthContext);
     const logout = () => {
         logOut()
             .then(result => {
@@ -14,14 +13,9 @@ const Navbar = () => {
                 console.log(error);
             })
     }
-    let btnValue = false;
-    const handleDarkLightMode = (event) => {
-        btnValue = event.target.checked;
-        setMode(btnValue);
+    const updateViewMode = (event) => {
+        updateMode(event.target.checked)
     }
-    useEffect(() => {
-        themeChange(false)
-    }, [btnValue])
     return (
         <>
             <div className='navbar-container max-w-[1440px] mx-auto  font-semibold '>
@@ -30,11 +24,11 @@ const Navbar = () => {
                         <Link to='/' className=" normal-case text-2xl"><img className='h-14 rounded' src={logo} alt="siteImage" /></Link>
                     </div>
                     <div className='navbar-end'>
-                        
+
                         <div className=" dropdown w-fit md:hidden ">
 
                             <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow border-2 border-slate-800 bg-[#000481] text-white w-[152px] left-[-100px] top-[45px] rounded">
-                            <li>
+                                <li>
                                     <Link to='/' >Home</Link>
                                 </li>
                                 <li>
@@ -89,8 +83,12 @@ const Navbar = () => {
                                     <Link to='/' >Home</Link>
                                 </li>
                                 <li>
-                                    <Link to='/courses' >Courses</Link>
+                                    <Link
+                                        to="/courses"
+
+                                    >Courses</Link>
                                 </li>
+
                                 <li>
                                     <Link to='/faq' >FAQ</Link>
                                 </li>
@@ -119,11 +117,11 @@ const Navbar = () => {
                                         </li>
                                     </>
                                 }
-                                <form className='flex items-center ml-3'>
+                                <form   className='flex items-center ml-3'>
 
-                                    <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
+                                    <button  data-toggle-theme="dark,light" data-act-class="ACTIVECLASS">
                                         <div className="form-control">
-                                            <input type="checkbox" className="toggle toggle-primary" name='darklightbtn' />
+                                            <input onClick={updateViewMode} type="checkbox" className="toggle toggle-primary" name='darklightbtn' />
                                         </div>
                                     </button>
                                 </form>
@@ -131,7 +129,6 @@ const Navbar = () => {
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
 

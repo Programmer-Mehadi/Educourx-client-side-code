@@ -6,7 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 const Signup = () => {
     const [error, setError] = useState(null);
     const [authError, setAuthError] = useState(null);
-    const { user, providerLogin, createNewUser, updateUserInfo, logOut,userLogin} = useContext(AuthContext);
+    const {mode, user, providerLogin, createNewUser, updateUserInfo, logOut,userLogin} = useContext(AuthContext);
     const location = useLocation();
     const from = location?.state?.form?.pathname || '/';
     const navigate = useNavigate();
@@ -102,43 +102,41 @@ const Signup = () => {
                         <h1 className="text-5xl font-bold">Signup now!</h1>
                         <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                     </div>
-                    <div className="col-span-3 card flex-shrink-0 w-full shadow-2xl bg-base-100 border-0 rounded">
+                    <div className={`col-span-3 card flex-shrink-0 w-full shadow-2xl  border-0 rounded ${ mode && 'text-white border-emerald-50 border-[1px]'}`}>
                         <form onSubmit={createUser} className="card-body ">
                             <div className="form-control border-0">
                                 <label className="label">
-                                    <span className="label-text">Full Name</span>
+                                    <span className="">Full Name</span>
                                 </label>
                                 <input type="text" placeholder="name" name='fullname' className="input input-bordered rounded" required />
                             </div>
                             <div className="form-control border-0">
                                 <label className="label">
-                                    <span className="label-text">Email</span>
+                                    <span className="">Email</span>
                                 </label>
                                 <input type="email" placeholder="email" name='email' className="input input-bordered rounded" required />
                             </div>
 
                             <div className="form-control border-0">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
+                                    <span className="">Password</span>
                                 </label>
-                                <input type="password" name='password' placeholder="password" className="input input-bordered rounded" required />
+                                <input type="password" name='password' placeholder="password" className="text-slate-900 input input-bordered rounded" required />
                             </div>
                             <div className="form-control border-0">
                                 <label className="label">
-                                    <span className="label-text">Confirm Password</span>
+                                    <span className="">Confirm Password</span>
                                 </label>
-                                <input type="password" name='confirmpassword' placeholder="confirm password" className="input input-bordered rounded" required />
+                                <input type="password" name='confirmpassword' placeholder="confirm password" className="text-slate-900 input input-bordered rounded" required />
 
                             </div>
                             <div className="form-control border-0">
                                 <label className="label">
-                                    <span className="label-text">Photo</span>
+                                    <span className="">Photo</span>
                                 </label>
                                 <input type="text" name='file' className="input input-bordered rounded" placeholder='user photo url' required />
                             </div>
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+                             
                             {
                                 error && <p className='py-2 text-red-700'>{error}*</p>
                             }

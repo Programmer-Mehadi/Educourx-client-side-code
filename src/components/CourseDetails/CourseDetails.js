@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaAngleRight, FaCertificate, FaChartBar, FaClock, FaFileExcel, FaLocationArrow, FaMoneyBill, FaPhone, FaSms, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import Pdf from "react-to-pdf";
+
 const CourseDetails = () => {
+    const ref = useRef()
     const course = useLoaderData();
 
     const [authorInfo, setAuthorInfo] = useState({});
 
-    const { darkMode } = useContext(AuthContext);
     const { _id, courseName, img, categoryName, authorName, rating, price, lessons, time, levels, about, authorId, categoryId, certificated, } = course;
     useEffect(() => {
         fetch(`https://edu-courx-server.vercel.app/author/${authorId}`)
@@ -16,13 +17,17 @@ const CourseDetails = () => {
     }, [])
     return (
         <div className='py-10  max-w-[1440px] mx-auto'>
-            <div className='w-[98%] mx-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-                <div className='col-span-1 md:col-span-2 lg:col-span-3'>
-                    <img src={img} alt="" className='w-full h-[400px] rounded' />
+            <Pdf targetRef={ref} filename="code-example.pdf">
+                {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
+            </Pdf>
+            <div ref={ref} className='w-[98%] mx-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6' >
+                <div className='col-span-1 md:col-span-2 lg:col-span-3 ' >
                     <h2 className='font-bold text-3xl pt-6 mt-6'>{courseName}</h2>
                     <Link to={`/courses/category/${categoryId}`}>
                         <div className="badge badge-primary mb-6 ">{categoryName}</div>
                     </Link>
+                    <img src={img} alt="" className='w-full h-[400px] rounded' />
+
                     <div className='grid grid-cols-3 justify-evenly rounded bg-gray-700 text-white py-5'>
                         <div className='flex flex-col justify-center align-middle items-center'>
                             <FaClock />

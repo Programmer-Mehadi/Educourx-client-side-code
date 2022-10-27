@@ -6,7 +6,7 @@ import SideBar from '../SideBar/SideBar';
 const Courses = () => {
 
     const courses = useLoaderData()
-    const { darkMode } = useContext(AuthContext);
+    
     return (
         <div className= ' text-[#140342] max-w-[1440px] mx-auto '>
             <div className='w-[98%] mx-auto py-14'>
