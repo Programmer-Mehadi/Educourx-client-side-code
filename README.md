@@ -1,3 +1,13 @@
+# Project Description:
+website name : Educourx
+website live link: https://educourx-auth.web.app/
+- Used: React,Javascript,Css,Firebase,Tailwind,DaisyuI,etc.
+- online course related website.
+- view course, course by category.
+- login,signup by firebase.
+- gmail and github authentication.
+- course checkout available. Make it private route.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
