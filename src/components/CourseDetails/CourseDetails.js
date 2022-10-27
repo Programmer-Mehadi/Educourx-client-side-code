@@ -16,7 +16,7 @@ const CourseDetails = () => {
             .then(data => setAuthorInfo(data))
     }, [])
     return (
-        <div className='py-10  max-w-[1440px] mx-auto'>
+        <div className='py-4  max-w-[1440px] mx-auto'>
 
             <div ref={ref} className='w-[98%] mx-auto   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6' >
                 <div className='col-span-1 md:col-span-2 lg:col-span-3 ' >

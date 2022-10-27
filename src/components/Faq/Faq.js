@@ -3,7 +3,7 @@ import React from 'react';
 const Faq = () => {
     return (
         <div>
-            <h2 className='py-8 text-xl font-bold text-center'>Frequently Asked Questions</h2>
+            <h2 className='py-8 text-xl font-bold text-center underline'>Frequently Asked Questions</h2>
             <div className='w-10/12 max-w-[700px] mx-auto py-10 flex flex-col gap-6 '>
                 <div tabIndex={0} className="collapse collapse-arrow border border-base-300  0 rounded-box">
                     <div className="collapse-title text-xl font-medium">
