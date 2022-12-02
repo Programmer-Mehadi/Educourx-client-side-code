@@ -2,6 +2,7 @@
 website name : Educourx
 
 website live link: https://educourx-auth.web.app/
+website server-side-code link : https://github.com/Programmer-Mehadi/Educourx-server-side-code
 - Used: React,Javascript,Css,Firebase,Tailwind,DaisyuI,etc.
 - online course related website.
 - view course, course by category.
